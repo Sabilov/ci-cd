@@ -4,7 +4,7 @@ networks:
 
 services:
   goapp:
-    image: askhadsabilov/sso:latest
+    image: askhadsabilov/ssobe:latest
     ports:
       - "4000:4000"
     restart: always
