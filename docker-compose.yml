@@ -1,0 +1,42 @@
+networks:
+  dev:
+    driver: bridge
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf'
+    depends_on:
+      - nuxtapp
+      - goapp
+      - goapptwo
+    restart: always
+    networks:
+      - dev
+
+  nuxtapp:
+    image: askhadsabilov/nuxtapp:latest
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - dev
+
+  goapp:
+    image: askhadsabilov/goapp:latest
+    ports:
+      - "4000:4000"
+    restart: always
+    networks:
+      - dev
+
+  goapptwo:
+    image: askhadsabilov/goapptwo:latest
+    ports:
+      - "5000:5000"
+    restart: always
+    networks:
+      - dev
