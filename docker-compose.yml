@@ -3,7 +3,21 @@ networks:
     driver: bridge
 
 services:
-  goapp:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf'
+    depends_on:
+      - nuxtapp
+      - goapp
+      - goapptwo
+    restart: always
+    networks:
+      - dev
+      
+  ssobe:
     image: askhadsabilov/ssobe:latest
     ports:
       - "4000:4000"
