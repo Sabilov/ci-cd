@@ -10,9 +10,7 @@ services:
     volumes:
       - './nginx.conf:/etc/nginx/nginx.conf'
     depends_on:
-      - nuxtapp
-      - goapp
-      - goapptwo
+      - ssobe
     restart: always
     networks:
       - dev
